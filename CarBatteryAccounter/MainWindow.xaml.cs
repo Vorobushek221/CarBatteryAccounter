@@ -1,4 +1,5 @@
-﻿using CarBatteryAccounter.Samples;
+﻿using CarBatteryAccounter.Model;
+using CarBatteryAccounter.Samples;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace CarBatteryAccounter
         public MainWindow()
         {
             InitializeComponent();
-            CodeSamples.DbConnectionTest();
+            var a = new DatabaseOperations().SelectAll("sales");
         }
     }
 }
