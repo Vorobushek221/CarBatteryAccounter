@@ -1,0 +1,22 @@
+﻿<Window x:Class="CarBatteryAccounter.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarBatteryAccounter.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="506.729" Width="785.151">
+    <Grid>
+        <ListView Name="listView" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Path=Model}"></GridViewColumn>
+                        <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Path=Number}"></GridViewColumn>
+                        <GridViewColumn Header="Водитель" DisplayMemberBinding="{Binding Path=DriverName}"></GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

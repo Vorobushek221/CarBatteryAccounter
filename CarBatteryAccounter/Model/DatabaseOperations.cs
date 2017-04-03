@@ -37,6 +37,7 @@ namespace CarBatteryAccounter.Model
                 {
                     row.Add(dataReader.GetName(i), dataReader.GetValue(i));
                 }
+
                 resultList.Add(row);
             }
             connection.Close();
