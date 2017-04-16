@@ -26,7 +26,7 @@ namespace CarBatteryAccounter.Model.Entities
         /// <summary>
         /// Аккумуляторы
         /// </summary>
-        public List<Battaty> Battaries { get; set; }
+        public List<Battary> Battaries { get; set; }
 
         public CarViewModel ToViewModel()
         {

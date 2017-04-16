@@ -2,7 +2,7 @@
 
 namespace CarBatteryAccounter.Model.Entities
 {
-    public class Battaty
+    public class Battary
     {
         /// <summary>
         /// Модель аккумулятора

@@ -21,32 +21,90 @@ namespace CarBatteryAccounter.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Car> collection;
+        private ObservableCollection<Car> carCollection;
+
+        private ObservableCollection<Battary> battaryCollection;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            InitCollection();
+            InitCarCollection();
         }
 
-        private void InitCollection()
+        private void InitCarCollection()
         {
-            collection = new ObservableCollection<Car>();
+            carCollection = new ObservableCollection<Car>();
             //Sample data --------------------------------
 
             for (int i = 0; i < 10; i++)
             {
-                var battary = new Battaty() { Model = "Duracell", SetDate = DateTime.Now, WriteOffDate = null, SubreportDate = null };
-                var batList = new List<Battaty>();
+                var battary = new Battary()
+                {
+                    Model = "Duracell",
+                    SetDate = DateTime.Now,
+                    WriteOffDate = DateTime.Now,
+                    SubreportDate = DateTime.Now,
+                    NomenclatureNumber = "wwf32r1313r",
+                    SerialNumber = "123214",
+                    Type = BattaryType.Type3
+                };
+                var batList = new List<Battary>();
                 batList.Add(battary);
-                var car = new Car { Model = "Audi A8", Number = "2134-AB", DriverName = "Dmitry",  Battaries = batList };
-                
-                collection.Add(car);
-               
+                batList.Add(battary);
+                var car = new Car { Model = "Audi A8", Number = "2134-AB", DriverName = "Dmitry", Battaries = batList };
+
+                carCollection.Add(car);
+
             }
-            listView.ItemsSource = collection;
+            carListView.ItemsSource = carCollection;
             //--------------------------------------------
+        }
+
+        private void CarListView_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            if (item != null)
+            {
+                var car = item as Car;
+                var battaryList = car.Battaries;
+                battaryCollection = new ObservableCollection<Battary>();
+                battaryList.ForEach(battary => battaryCollection.Add(battary));
+                BattaryListView.ItemsSource = battaryCollection;
+                ClearInfoForm();
+            }
+        }
+
+        private void BattaryListView_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem;
+            if (item != null)
+            {
+                var battary = item as Battary;
+                FillInfoForm(battary);
+            }
+        }
+
+        private void FillInfoForm(Battary battary)
+        {
+            modelTextBox.Text = battary.Model;
+            typeTextBox.Text = battary.Type.ToString();
+            serialNumberTextBox.Text = battary.SerialNumber;
+            nomenclatureNumberTextBox.Text = battary.NomenclatureNumber;
+            setDateTextBox.Text = battary.SetDate.ToString("dd.mm.yyyy");
+            writeOffDateTextBox.Text = battary.WriteOffDate?.ToString("dd.mm.yyyy");
+            subreportDateTextBox.Text = battary.SubreportDate?.ToString("dd.mm.yyyy");
+        }
+
+        private void ClearInfoForm()
+        {
+            modelTextBox.Text = string.Empty;
+            typeTextBox.Text = string.Empty;
+            serialNumberTextBox.Text = string.Empty;
+            nomenclatureNumberTextBox.Text = string.Empty;
+            setDateTextBox.Text = string.Empty;
+            writeOffDateTextBox.Text = string.Empty;
+            subreportDateTextBox.Text = string.Empty;
         }
     }
 }

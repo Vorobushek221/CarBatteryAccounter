@@ -54,7 +54,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\DatabaseOperations.cs" />
     <Compile Include="Model\DataManager.cs" />
-    <Compile Include="Model\Entities\Battaty.cs" />
+    <Compile Include="Model\Entities\Battary.cs" />
     <Compile Include="Model\Entities\BattaryType.cs" />
     <Compile Include="Model\Entities\Car.cs" />
     <Compile Include="Model\ViewModels\BattaryViewModel.cs" />

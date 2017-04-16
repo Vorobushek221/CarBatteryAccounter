@@ -5,18 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarBatteryAccounter.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="506.729" Width="785.151">
+        Title="MainWindow" Height="654.929" Width="967.551" WindowState="Maximized">
     <Grid>
-        <ListView Name="listView" Margin="5">
+        <ListView Name="carListView" Margin="5,41,0,4.8" HorizontalAlignment="Left" Width="254" PreviewMouseLeftButtonUp="CarListView_Click">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Path=Model}"></GridViewColumn>
-                        <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Path=Number}"></GridViewColumn>
+                        <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Path=Model}"></GridViewColumn>
+                        <GridViewColumn Header="Номер" DisplayMemberBinding="{Binding Path=Number}"></GridViewColumn>
                         <GridViewColumn Header="Водитель" DisplayMemberBinding="{Binding Path=DriverName}"></GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="Список машин:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.036,2.477" Width="249" FontSize="14" FontWeight="Bold"/>
+        <ListView x:Name="BattaryListView" Margin="320,41,0,0" HorizontalAlignment="Left" Width="338" Height="179" VerticalAlignment="Top" PreviewMouseLeftButtonUp="BattaryListView_Click">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Заводской номер" DisplayMemberBinding="{Binding SerialNumber}"/>
+                    <!--<GridViewColumn Header="Номенклатурный номер" DisplayMemberBinding="{Binding NomenclatureNumber}"/>-->
+                    <!--<GridViewColumn Header="Дата установки" DisplayMemberBinding="{Binding SetDate}"/>-->
+                    <!--<GridViewColumn Header="Дата списывания" DisplayMemberBinding="{Binding WriteOffDate}"/>-->
+                    <!--<GridViewColumn Header="Дата установки на подотчет" DisplayMemberBinding="{Binding SubreportDate}"/>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Аккумуляторы:" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.036,2.477" Width="249" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Информация об аккумуляторе:" HorizontalAlignment="Left" Margin="320,241,0,0" VerticalAlignment="Top" Height="36" Width="313" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Модель:" HorizontalAlignment="Left" Margin="320,282,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+        <Label Content="Тип:" HorizontalAlignment="Left" Margin="320,313,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label Content="Заводской номер:" HorizontalAlignment="Left" Margin="320,344,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
+        <Label Content="Номенклатурный номер:" HorizontalAlignment="Left" Margin="320,375,0,0" VerticalAlignment="Top" Height="26" Width="149"/>
+        <Label Content="Дата установки:" HorizontalAlignment="Left" Margin="320,406,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
+        <Label Content="Дата списывания:" HorizontalAlignment="Left" Margin="320,437,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
+        <Label Content="Дата установки на подотчет:" HorizontalAlignment="Left" Margin="320,468,0,0" VerticalAlignment="Top" Height="26" Width="171"/>
+        
+        <TextBox Name="modelTextBox" HorizontalAlignment="Left" Height="23" Margin="493,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="typeTextBox" HorizontalAlignment="Left" Height="23" Margin="493,316,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="serialNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="493,347,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="nomenclatureNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="493,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="setDateTextBox" HorizontalAlignment="Left" Height="23" Margin="493,409,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="writeOffDateTextBox" HorizontalAlignment="Left" Height="23" Margin="493,440,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="subreportDateTextBox" HorizontalAlignment="Left" Height="23" Margin="493,471,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        
+        <Button Content="Списать" HorizontalAlignment="Left" Margin="320,526,0,0" VerticalAlignment="Top" Width="128" Height="32"/>
+        <Button Content="Установить с подотчета" HorizontalAlignment="Left" Margin="484,526,0,0" VerticalAlignment="Top" Width="139" Height="32"/>
+        <Button Content="Списать машину" HorizontalAlignment="Left" Margin="648,526,0,0" VerticalAlignment="Top" Width="128" Height="32"/>
     </Grid>
+
 </Window>
