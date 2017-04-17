@@ -24,6 +24,11 @@ namespace CarBatteryAccounter.Model.Entities
         public string DriverName { get; set; }
 
         /// <summary>
+        /// Имя водителя 2 (в конце акта)
+        /// </summary>
+        public string DriverName2 { get; set; }
+
+        /// <summary>
         /// Аккумуляторы
         /// </summary>
         public List<Battary> Battaries { get; set; }
@@ -32,9 +37,10 @@ namespace CarBatteryAccounter.Model.Entities
         {
             return new CarViewModel
             {
-                Model = this.Model,
-                DriverName = this.DriverName,
-                Number = this.Number
+                Model = (Model != null) ? this.Model : string.Empty,
+                DriverName = (DriverName != null) ? this.DriverName : string.Empty,
+                DriverName2 = (DriverName2 != null) ? this.DriverName2 : string.Empty,
+                Number = (Number != null) ? this.Number : string.Empty
             };
         }
     }

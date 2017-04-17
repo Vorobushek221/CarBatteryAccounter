@@ -23,14 +23,9 @@ namespace CarBatteryAccounter.Model.ViewModels
         /// </summary>
         public string DriverName { get; set; }
 
-        public Car ToEntity() // lose of data!!!!!
-        {
-            return new Car
-            {
-                Model = this.Model,
-                Number = this.Number,
-                DriverName = this.DriverName
-            };
-        }
+        /// <summary>
+        /// Имя водителя 2 (в конце акта)
+        /// </summary>
+        public string DriverName2 { get; set; }
     }
 }

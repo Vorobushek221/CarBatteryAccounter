@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarBatteryAccounter.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="654.929" Width="967.551" WindowState="Maximized">
-    <Grid>
+        Title="MainWindow" Height="816.619" Width="1369.151" WindowState="Maximized">
+    <Grid Margin="0,0,-0.2,0">
         <ListView Name="carListView" Margin="5,41,0,4.8" HorizontalAlignment="Left" Width="254" PreviewMouseLeftButtonUp="CarListView_Click">
             <ListView.View>
                 <GridView>
@@ -19,7 +19,7 @@
             </ListView.View>
         </ListView>
         <Label Content="Список машин:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.036,2.477" Width="249" FontSize="14" FontWeight="Bold"/>
-        <ListView x:Name="BattaryListView" Margin="320,41,0,0" HorizontalAlignment="Left" Width="338" Height="179" VerticalAlignment="Top" PreviewMouseLeftButtonUp="BattaryListView_Click">
+        <ListView x:Name="BattaryListView" Margin="333,42,0,0" HorizontalAlignment="Left" Width="320" Height="104" VerticalAlignment="Top" PreviewMouseLeftButtonUp="BattaryListView_Click">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}"/>
@@ -32,27 +32,61 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Аккумуляторы:" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.036,2.477" Width="249" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Информация об аккумуляторе:" HorizontalAlignment="Left" Margin="320,241,0,0" VerticalAlignment="Top" Height="36" Width="313" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Модель:" HorizontalAlignment="Left" Margin="320,282,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
-        <Label Content="Тип:" HorizontalAlignment="Left" Margin="320,313,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
-        <Label Content="Заводской номер:" HorizontalAlignment="Left" Margin="320,344,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
-        <Label Content="Номенклатурный номер:" HorizontalAlignment="Left" Margin="320,375,0,0" VerticalAlignment="Top" Height="26" Width="149"/>
-        <Label Content="Дата установки:" HorizontalAlignment="Left" Margin="320,406,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
-        <Label Content="Дата списывания:" HorizontalAlignment="Left" Margin="320,437,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
-        <Label Content="Дата установки на подотчет:" HorizontalAlignment="Left" Margin="320,468,0,0" VerticalAlignment="Top" Height="26" Width="171"/>
-        
-        <TextBox Name="modelTextBox" HorizontalAlignment="Left" Height="23" Margin="493,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        <TextBox Name="typeTextBox" HorizontalAlignment="Left" Height="23" Margin="493,316,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        <TextBox Name="serialNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="493,347,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        <TextBox Name="nomenclatureNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="493,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        <TextBox Name="setDateTextBox" HorizontalAlignment="Left" Height="23" Margin="493,409,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        <TextBox Name="writeOffDateTextBox" HorizontalAlignment="Left" Height="23" Margin="493,440,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        <TextBox Name="subreportDateTextBox" HorizontalAlignment="Left" Height="23" Margin="493,471,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
-        
-        <Button Content="Списать" HorizontalAlignment="Left" Margin="320,526,0,0" VerticalAlignment="Top" Width="128" Height="32"/>
-        <Button Content="Установить с подотчета" HorizontalAlignment="Left" Margin="484,526,0,0" VerticalAlignment="Top" Width="139" Height="32"/>
-        <Button Content="Списать машину" HorizontalAlignment="Left" Margin="648,526,0,0" VerticalAlignment="Top" Width="128" Height="32"/>
+        <Label Content="Аккумуляторы на выбранной машине:" HorizontalAlignment="Left" Margin="333,11,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.036,2.477" Width="320" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Информация о выбранном аккумуляторе на машине:" HorizontalAlignment="Left" Margin="737,187,0,0" VerticalAlignment="Top" Height="36" Width="456" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Модель:" HorizontalAlignment="Left" Margin="737,228,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+        <Label Content="Тип:" HorizontalAlignment="Left" Margin="737,259,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label Content="Заводской номер:" HorizontalAlignment="Left" Margin="737,290,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
+        <Label Content="Номенклатурный номер:" HorizontalAlignment="Left" Margin="737,321,0,0" VerticalAlignment="Top" Height="26" Width="149"/>
+        <Label Content="Дата установки:" HorizontalAlignment="Left" Margin="737,352,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
+
+        <TextBox Name="battaryModelTextBox" HorizontalAlignment="Left" Height="23" Margin="908,231,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="battaryTypeTextBox" HorizontalAlignment="Left" Height="23" Margin="908,262,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="battarySerialNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="908,293,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="battaryNomenclatureNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="908,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox Name="battarySetDateTextBox" HorizontalAlignment="Left" Height="23" Margin="908,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+
+        <Button Name ="writeOffButton" Content="Акт на списание изношенных АКБ" HorizontalAlignment="Left" Margin="739,646,0,0" VerticalAlignment="Top" Width="456" Height="32" Click="writeOffButton_Click" />
+        <Button Name ="subreportButton" Content="Акт на списание АКБ с установкой на подотчет (при списании автомобиля)" HorizontalAlignment="Left" Margin="739,692,0,0" VerticalAlignment="Top" Width="456" Height="32" Click="SubreportButton_Click" />
+        <Button Name ="setSubreportedButton" Content="Акт на списание с установкой подотчетной АКБ" HorizontalAlignment="Left" Margin="739,737,0,0" VerticalAlignment="Top" Width="456" Height="32" Click="SetSubreportedButton_Click"/>
+
+
+        <Label Content="Информация о выбранной машине:" HorizontalAlignment="Left" Margin="736,11,0,0" VerticalAlignment="Top" Height="36" Width="398" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Модель:" HorizontalAlignment="Left" Margin="736,52,0,0" VerticalAlignment="Top" Height="26" Width="56"/>
+        <Label Content="Номер:" HorizontalAlignment="Left" Margin="736,83,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
+        <Label Content="Ф.И.О. водителя:" HorizontalAlignment="Left" Margin="736,114,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
+        <Label Content="И.О.Ф. водителя:" HorizontalAlignment="Left" Margin="736,145,0,0" VerticalAlignment="Top" Height="26" Width="149"/>
+        <TextBox x:Name="carModelTextBox" HorizontalAlignment="Left" Height="23" Margin="887,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247"/>
+        <TextBox x:Name="carNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="887,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247"/>
+        <TextBox x:Name="carDriverNameTextBox" HorizontalAlignment="Left" Height="23" Margin="887,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247"/>
+        <TextBox x:Name="carDriverName2TextBox" HorizontalAlignment="Left" Height="23" Margin="887,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247"/>
+        <ListView x:Name="subBattaryListView" Margin="333,204,0,10.2" HorizontalAlignment="Left" Width="320" PreviewMouseLeftButtonUp="SubBattaryListView_Click">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Модель" DisplayMemberBinding="{Binding Model}"/>
+                    <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Заводской номер" DisplayMemberBinding="{Binding SerialNumber}"/>
+                    <!--<GridViewColumn Header="Номенклатурный номер" DisplayMemberBinding="{Binding NomenclatureNumber}"/>-->
+                    <!--<GridViewColumn Header="Дата установки" DisplayMemberBinding="{Binding SetDate}"/>-->
+                    <!--<GridViewColumn Header="Дата списывания" DisplayMemberBinding="{Binding WriteOffDate}"/>-->
+                    <!--<GridViewColumn Header="Дата установки на подотчет" DisplayMemberBinding="{Binding SubreportDate}"/>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Аккумуляторы, находящиеся на подотчете:" HorizontalAlignment="Left" Margin="333,169,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.036,2.477" Width="320" FontSize="14" FontWeight="Bold" Height="30"/>
+        <Label Content="Информация о выбранном аккумуляторе на подотчете:" HorizontalAlignment="Left" Margin="739,389,0,0" VerticalAlignment="Top" Height="36" Width="456" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Модель:" HorizontalAlignment="Left" Margin="739,430,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+        <Label Content="Тип:" HorizontalAlignment="Left" Margin="739,461,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label Content="Заводской номер:" HorizontalAlignment="Left" Margin="739,492,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
+        <Label Content="Номенклатурный номер:" HorizontalAlignment="Left" Margin="739,523,0,0" VerticalAlignment="Top" Height="26" Width="149"/>
+        <Label Content="Дата установки:" HorizontalAlignment="Left" Margin="739,554,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
+        <Label Content="Дата установки на подотчет:" HorizontalAlignment="Left" Margin="739,596,0,0" VerticalAlignment="Top" Height="26" Width="171"/>
+        <TextBox x:Name="subBattaryModelTextBox" HorizontalAlignment="Left" Height="23" Margin="910,433,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox x:Name="subBattaryTypeTextBox" HorizontalAlignment="Left" Height="23" Margin="910,465,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox x:Name="subBattarySerialNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="910,495,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox x:Name="subBattaryNomenclatureNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="910,526,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox x:Name="subBattarySetDateTextBox" HorizontalAlignment="Left" Height="23" Margin="910,558,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
+        <TextBox x:Name="subBattarySubreportDateTextBox" HorizontalAlignment="Left" Height="23" Margin="910,599,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283"/>
     </Grid>
 
 </Window>

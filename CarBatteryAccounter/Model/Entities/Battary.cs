@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarBatteryAccounter.Model.ViewModels;
+using System;
 
 namespace CarBatteryAccounter.Model.Entities
 {
@@ -27,7 +28,7 @@ namespace CarBatteryAccounter.Model.Entities
         /// <summary>
         /// Дата установки
         /// </summary>
-        public DateTime SetDate { get; set; }
+        public DateTime? SetDate { get; set; }
 
 
         /// <summary>
@@ -40,5 +41,19 @@ namespace CarBatteryAccounter.Model.Entities
         /// Дата установки на подотчет
         /// </summary>
         public DateTime? SubreportDate { get; set; }
+
+        public BattaryViewModel ToViewModel()
+        {
+            return new BattaryViewModel
+            {
+                Model = (Model != null) ? this.Model : string.Empty,
+                Type = (Type != null) ? this.Type.ToString() : string.Empty,
+                SerialNumber = (SerialNumber != null) ? this.SerialNumber : string.Empty,
+                NomenclatureNumber = (NomenclatureNumber != null) ? this.NomenclatureNumber : string.Empty,
+                SetDate = (SetDate != null) ? this.SetDate?.ToString("dd.MM.yyyy") : string.Empty,
+                WriteOffDate = (WriteOffDate != null) ? this.WriteOffDate?.ToString("dd.MM.yyyy") : string.Empty,
+                SubreportDate = (SubreportDate != null) ? this.SubreportDate?.ToString("dd.MM.yyyy") : string.Empty,
+            };
+        }
     }
 }
