@@ -16,7 +16,7 @@ namespace CarBatteryAccounter.Model
         private const string setSubreportedDocName = @"Акт на списание с установкой подотчетной АКБ";
         private const string subreportDocName = @"Акт на списание АКБ с установкой на подотчет (при списании автомобиля)";
 
-        private readonly Word.Application app;
+        private Word.Application app;
 
         public DocumentManager()
         {
@@ -59,7 +59,6 @@ namespace CarBatteryAccounter.Model
 
         private string GenerateFilePath(DocumentType docType, bool toSave = false)
         {
-
             string newFilePath = string.Empty;
             string fileName = string.Empty;
 
@@ -104,7 +103,19 @@ namespace CarBatteryAccounter.Model
 
         public void GenerateDoc(DocumentType docType, CarViewModel car, BattaryViewModel battary, BattaryViewModel subBattary)
         {
+            if (app == null)
+            {
+                app = new Word.Application();
+            }
+
+            Word.Application objWord;
+            objWord = (Word.Application)System.Runtime.InteropServices.Marshal.GetActiveObject("Word.Application");
+            if(objWord.Windows.Count == 0)
+            {
+                app = new Word.Application();
+            }
             app.Visible = false;
+
             var replaceRows = new Dictionary<string, string>();
 
             switch (docType)
@@ -168,7 +179,17 @@ namespace CarBatteryAccounter.Model
 
         public void Dispose()
         {
-            app.Quit();
+            try
+            {
+                if (app != null)
+                {
+                    if (!app.Visible)
+                    {
+                        app.Quit();
+                    }
+                }
+            }
+            catch { }      
         }
     }
 

@@ -30,6 +30,8 @@ namespace CarBatteryAccounter.View
 
         private DocumentManager documentManager;
 
+        private DatabaseOperations databaseOperations;
+
         private Car selectedCar;
 
         private Battary selectedBattary;
@@ -41,6 +43,10 @@ namespace CarBatteryAccounter.View
             InitializeComponent();
 
             documentManager = new DocumentManager();
+            //databaseOperations = new DatabaseOperations();
+
+            //databaseOperations.SelectAll("spr_pds");
+
             selectedCar = null;
             selectedBattary = null;
             selectedSubBattary = null;
@@ -52,6 +58,9 @@ namespace CarBatteryAccounter.View
         private void InitCarCollection()
         {
             carCollection = new ObservableCollection<Car>();
+
+
+
             //Sample data --------------------------------
 
             for (int i = 0; i < 10; i++)
@@ -69,11 +78,29 @@ namespace CarBatteryAccounter.View
                 var batList = new List<Battary>();
                 batList.Add(battary);
                 batList.Add(battary);
-                var car = new Car { Model = "Audi A8", Number = "2134-AB", DriverName = "Anisko D.G.", DriverName2 = "D.G.Anisko", Battaries = batList };
+                var car = new Car { Model = "Car12", Number = "2134-AB", DriverName = "Anisko D.G.", DriverName2 = "D.G.Anisko", Battaries = batList };
 
                 carCollection.Add(car);
 
             }
+
+
+            var battary1 = new Battary()
+            {
+                Model = "Duracell",
+                SetDate = DateTime.Now,
+                WriteOffDate = DateTime.Now,
+                SubreportDate = DateTime.Now,
+                NomenclatureNumber = "wwf32r1313r",
+                SerialNumber = "123214",
+                Type = BattaryType.Type3
+            };
+            var batList1 = new List<Battary>();
+            batList1.Add(battary1);
+
+            var car1 = new Car { Model = "Car214234351", Number = "2134-ABfedfa", DriverName = "Postoyalko A.A.", DriverName2 = "A.A.Postoyalko", Battaries = batList1 };
+
+            carCollection.Add(car1);
             //--------------------------------------------
             carListView.ItemsSource = carCollection;
         }
@@ -250,6 +277,11 @@ namespace CarBatteryAccounter.View
         private void SetSubreportedButton_Click(object sender, RoutedEventArgs e)
         {
             documentManager.GenerateDoc(DocumentType.setSubreportedDoc, GetCarViewModel(), GetBattaryViewModel(), GetSubBattaryViewModel());
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            documentManager.Dispose();
         }
     }
 }

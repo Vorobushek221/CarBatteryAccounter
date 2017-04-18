@@ -46,6 +46,7 @@ namespace CarBatteryAccounter.Model
         }
 
 
+
         public void Dispose()
         {
             connection?.Close();

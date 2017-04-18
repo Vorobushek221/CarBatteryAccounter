@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarBatteryAccounter.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="816.619" Width="1369.151" WindowState="Maximized">
+        Title="Учет АКБ" Height="816.619" Width="1369.151" WindowState="Maximized"
+        Closed="Window_Closed">
     <Grid Margin="0,0,-0.2,0">
         <ListView Name="carListView" Margin="5,41,0,4.8" HorizontalAlignment="Left" Width="254" PreviewMouseLeftButtonUp="CarListView_Click">
             <ListView.View>

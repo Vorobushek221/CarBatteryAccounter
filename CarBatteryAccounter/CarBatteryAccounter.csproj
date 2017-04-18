@@ -94,7 +94,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="bin\Debug\data\documents\Акт на списание изношенных АКБ_17.04.2017-02.59.docx" />
     <None Include="bin\Debug\data\templates\Акт на списание АКБ с установкой на подотчет %28при списании автомобиля%29.docx" />
     <None Include="bin\Debug\data\templates\Акт на списание изношенных АКБ.docx" />
     <None Include="bin\Debug\data\templates\Акт на списание с установкой подотчетной АКБ.docx" />
