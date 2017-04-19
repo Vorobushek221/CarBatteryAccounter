@@ -26,10 +26,22 @@ namespace CarBatteryAccounter.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Driver={Microsoft dBASE Driver (*.dbf)};DriverID=277;Dbq=d:\\\\db;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Driver={Microsoft dBASE Driver (*.dbf)};DriverID=277;Dbq=data\\\\db;")]
         public string myConnectionString {
             get {
                 return ((string)(this["myConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("acc_.dbf")]
+        public string tableName {
+            get {
+                return ((string)(this["tableName"]));
+            }
+            set {
+                this["tableName"] = value;
             }
         }
     }

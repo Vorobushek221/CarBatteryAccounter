@@ -25,8 +25,6 @@ using System.Windows.Shapes;
 
 namespace CarBatteryAccounter.View
 {
-    
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -40,8 +38,6 @@ namespace CarBatteryAccounter.View
 
         private DocumentManager documentManager;
 
-        private DatabaseOperations databaseOperations;
-
         private Car selectedCar;
 
         private Battary selectedBattary;
@@ -54,9 +50,6 @@ namespace CarBatteryAccounter.View
             InitializeComponent();
 
             documentManager = new DocumentManager();
-
-
-            
             
             selectedCar = null;
             selectedBattary = null;

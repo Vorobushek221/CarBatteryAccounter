@@ -48,7 +48,7 @@ namespace CarBatteryAccounter.Model
                 object replaceTextWith = pair.Value;
                 if(string.IsNullOrEmpty((string)replaceTextWith))
                 {
-                    replaceTextWith = findText;
+                    replaceTextWith = "____________";
                 }
                 app.Selection.Find.Execute(ref findText, ref matchCase, ref matchWholeWord,
                 ref matchWildCards, ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format, ref replaceTextWith, ref replace,

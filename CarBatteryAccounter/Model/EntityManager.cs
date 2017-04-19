@@ -10,7 +10,7 @@ namespace CarBatteryAccounter.Model
     {
         public static List<Car> GetCarCollection()
         {
-            var databaseOperations = new DatabaseOperations("acc_.dbf");
+            var databaseOperations = new DatabaseOperations(Properties.Settings.Default.tableName);
             var carsQuery = databaseOperations.GetDistinctCarsQuery();
             var battatiesQuery = databaseOperations.GetBattariesQuery();
 
@@ -81,7 +81,7 @@ namespace CarBatteryAccounter.Model
         {
             var battaryList = new List<Battary>();
 
-            var databaseOperations = new DatabaseOperations("acc_.dbf");
+            var databaseOperations = new DatabaseOperations(Properties.Settings.Default.tableName);
             var battatiesQuery = databaseOperations.GetBattariesQuery();
 
             foreach (var row in battatiesQuery)
