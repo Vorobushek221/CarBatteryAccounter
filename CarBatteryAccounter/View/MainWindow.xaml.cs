@@ -1,11 +1,16 @@
-﻿using CarBatteryAccounter.Model;
+﻿
+
+using CarBatteryAccounter.Model;
 using CarBatteryAccounter.Model.Entities;
 using CarBatteryAccounter.Model.ViewModels;
+using CarBatteryAccounter.Samples;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,8 +20,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
+
+
 namespace CarBatteryAccounter.View
 {
+    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -40,13 +50,14 @@ namespace CarBatteryAccounter.View
 
         public MainWindow()
         {
+
             InitializeComponent();
 
             documentManager = new DocumentManager();
-            //databaseOperations = new DatabaseOperations();
 
-            //databaseOperations.SelectAll("spr_pds");
 
+            
+            
             selectedCar = null;
             selectedBattary = null;
             selectedSubBattary = null;
@@ -59,49 +70,10 @@ namespace CarBatteryAccounter.View
         {
             carCollection = new ObservableCollection<Car>();
 
+            List<Car> cars = EntityManager.GetCarCollection();
 
+            cars.ForEach(car => carCollection.Add(car));
 
-            //Sample data --------------------------------
-
-            for (int i = 0; i < 10; i++)
-            {
-                var battary = new Battary()
-                {
-                    Model = "Duracell",
-                    SetDate = DateTime.Now,
-                    WriteOffDate = DateTime.Now,
-                    SubreportDate = DateTime.Now,
-                    NomenclatureNumber = "wwf32r1313r",
-                    SerialNumber = "123214",
-                    Type = BattaryType.Type3
-                };
-                var batList = new List<Battary>();
-                batList.Add(battary);
-                batList.Add(battary);
-                var car = new Car { Model = "Car12", Number = "2134-AB", DriverName = "Anisko D.G.", DriverName2 = "D.G.Anisko", Battaries = batList };
-
-                carCollection.Add(car);
-
-            }
-
-
-            var battary1 = new Battary()
-            {
-                Model = "Duracell",
-                SetDate = DateTime.Now,
-                WriteOffDate = DateTime.Now,
-                SubreportDate = DateTime.Now,
-                NomenclatureNumber = "wwf32r1313r",
-                SerialNumber = "123214",
-                Type = BattaryType.Type3
-            };
-            var batList1 = new List<Battary>();
-            batList1.Add(battary1);
-
-            var car1 = new Car { Model = "Car214234351", Number = "2134-ABfedfa", DriverName = "Postoyalko A.A.", DriverName2 = "A.A.Postoyalko", Battaries = batList1 };
-
-            carCollection.Add(car1);
-            //--------------------------------------------
             carListView.ItemsSource = carCollection;
         }
 
@@ -109,23 +81,8 @@ namespace CarBatteryAccounter.View
         {
             subBattaryCollection = new ObservableCollection<Battary>();
 
-            //Samle data -----------------------------------------------
-            for (int i = 0; i < 10; i++)
-            {
-                var battary = new Battary()
-                {
-                    Model = "DuracellOld",
-                    SetDate = DateTime.Parse("12.12.2012"),
-                    WriteOffDate = null,
-                    SubreportDate = DateTime.Parse("12.12.2014"),
-                    NomenclatureNumber = "23435423r",
-                    SerialNumber = "567356",
-                    Type = BattaryType.Type1
-                };
-                subBattaryCollection.Add(battary);
-            }
-
-            //----------------------------------------------------------
+            var battaryList = EntityManager.GetBattaryCollection();
+            battaryList.ForEach(battary => subBattaryCollection.Add(battary));
 
             subBattaryListView.ItemsSource = subBattaryCollection;
         }
@@ -143,7 +100,6 @@ namespace CarBatteryAccounter.View
                 battaryList.ForEach(battary => battaryCollection.Add(battary));
                 BattaryListView.ItemsSource = battaryCollection;
                 FillCarInfoForm(car);
-                //ClearBattaryInfoForm();
             }
         }
 
@@ -189,7 +145,6 @@ namespace CarBatteryAccounter.View
 
         private void FillBattaryInfoForm(Battary battary)
         {
-            battaryModelTextBox.Text = battary.Model;
             battaryTypeTextBox.Text = battary.Type.ToString();
             battarySerialNumberTextBox.Text = battary.SerialNumber;
             battaryNomenclatureNumberTextBox.Text = battary.NomenclatureNumber;
@@ -198,7 +153,6 @@ namespace CarBatteryAccounter.View
 
         private void ClearBattaryInfoForm()
         {
-            battaryModelTextBox.Text = string.Empty;
             battaryTypeTextBox.Text = string.Empty;
             battarySerialNumberTextBox.Text = string.Empty;
             battaryNomenclatureNumberTextBox.Text = string.Empty;
@@ -207,22 +161,18 @@ namespace CarBatteryAccounter.View
 
         private void FillSubBattaryInfoForm(Battary battary)
         {
-            subBattaryModelTextBox.Text = battary.Model;
             subBattaryTypeTextBox.Text = battary.Type.ToString();
             subBattarySerialNumberTextBox.Text = battary.SerialNumber;
             subBattaryNomenclatureNumberTextBox.Text = battary.NomenclatureNumber;
             subBattarySetDateTextBox.Text = battary.SetDate?.ToString("dd.MM.yyyy");
-            subBattarySubreportDateTextBox.Text = battary.SubreportDate?.ToString("dd.MM.yyyy");
         }
 
         private void ClearSubBattaryInfoForm()
         {
-            subBattaryModelTextBox.Text = string.Empty;
             subBattaryTypeTextBox.Text = string.Empty;
             subBattarySerialNumberTextBox.Text = string.Empty;
             subBattaryNomenclatureNumberTextBox.Text = string.Empty;
             subBattarySetDateTextBox.Text = string.Empty;
-            subBattarySubreportDateTextBox.Text = string.Empty;
         }
 
         private CarViewModel GetCarViewModel()
@@ -240,7 +190,6 @@ namespace CarBatteryAccounter.View
         {
             return new BattaryViewModel
             {
-                Model = battaryModelTextBox.Text,
                 NomenclatureNumber = battaryNomenclatureNumberTextBox.Text,
                 SerialNumber = battarySerialNumberTextBox.Text,
                 SetDate = battarySetDateTextBox.Text,
@@ -254,13 +203,11 @@ namespace CarBatteryAccounter.View
         {
             return new BattaryViewModel
             {
-                Model = subBattaryModelTextBox.Text,
                 NomenclatureNumber = subBattaryNomenclatureNumberTextBox.Text,
                 SerialNumber = subBattarySerialNumberTextBox.Text,
                 SetDate = subBattarySetDateTextBox.Text,
                 Type = subBattaryTypeTextBox.Text,
-                WriteOffDate = string.Empty,
-                SubreportDate = subBattarySubreportDateTextBox.Text
+                WriteOffDate = string.Empty
             };
         }
 

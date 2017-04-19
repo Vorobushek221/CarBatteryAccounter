@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarBatteryAccounter.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
@@ -10,21 +11,24 @@ namespace CarBatteryAccounter.Model
     {
         public OdbcConnection connection;
 
-        public DatabaseOperations(string connectionString)
+        private string tableName;
+
+        public DatabaseOperations(string connectionString, string tableName)
         {
             connection = new OdbcConnection(connectionString);
+            this.tableName = tableName;
         }
 
-        public DatabaseOperations():
-            this(Properties.Settings.Default.myConnectionString)
+        public DatabaseOperations(string tableName) :
+            this(Properties.Settings.Default.myConnectionString ,tableName)
         {
+            this.tableName = tableName;
         }
 
-        public List<Dictionary<string, object>> SelectAll(string tableName)
+        public List<Dictionary<string, object>> GetQuery(string sql)
         {
-            string sql = "SELECT * FROM " + tableName;
-
             connection.Open();
+
             var comand = new OdbcCommand(sql, connection);
             var dataReader = comand.ExecuteReader();
 
@@ -45,7 +49,15 @@ namespace CarBatteryAccounter.Model
             return resultList;
         }
 
+        public List<Dictionary<string, object>> GetDistinctCarsQuery()
+        {
+            return GetQuery("SELECT distinct gnaid, gn, Nm, Llist FROM " + tableName);
+        }
 
+        public List<Dictionary<string, object>> GetBattariesQuery()
+        {
+            return GetQuery("SELECT distinct gnaid, Llist, Tipa, Nomak, Nnomak, Datpol, Datspis FROM " + tableName);
+        }
 
         public void Dispose()
         {

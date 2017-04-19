@@ -26,7 +26,7 @@ namespace CarBatteryAccounter.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Driver={Microsoft dBASE Driver (*.dbf)};DriverID=277;Dbq=d:\\\\f;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Driver={Microsoft dBASE Driver (*.dbf)};DriverID=277;Dbq=d:\\\\db;")]
         public string myConnectionString {
             get {
                 return ((string)(this["myConnectionString"]));

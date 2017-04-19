@@ -5,15 +5,11 @@ namespace CarBatteryAccounter.Model.Entities
 {
     public class Battary
     {
-        /// <summary>
-        /// Модель аккумулятора
-        /// </summary>
-        public string Model { get; set; }
 
         /// <summary>
         /// Тип аккумулятора
         /// </summary>
-        public BattaryType Type { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Заводской номер
@@ -46,7 +42,6 @@ namespace CarBatteryAccounter.Model.Entities
         {
             return new BattaryViewModel
             {
-                Model = (Model != null) ? this.Model : string.Empty,
                 Type = (Type != null) ? this.Type.ToString() : string.Empty,
                 SerialNumber = (SerialNumber != null) ? this.SerialNumber : string.Empty,
                 NomenclatureNumber = (NomenclatureNumber != null) ? this.NomenclatureNumber : string.Empty,

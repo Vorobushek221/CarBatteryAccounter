@@ -11,7 +11,10 @@ namespace CarBatteryAccounter.Samples
         public static void DbConnectionTest()
         {
             OdbcConnection connection = new OdbcConnection("Driver={Microsoft dBASE Driver (*.dbf)};DriverID=277;Dbq=d:\\db;");
-            String SQL = "SELECT * FROM Sales.dbf";
+            //OdbcConnection connection = new OdbcConnection("Provider = Microsoft.ACE.OLEDB.12.0; extended properties =\"excel 8.0;hdr=no;IMEX=1\";data source=");
+
+            
+            String SQL = "SELECT * FROM spr_pds_.DBF";
             connection.Open();
 
             OdbcCommand MyCommand = new OdbcCommand(SQL, connection);

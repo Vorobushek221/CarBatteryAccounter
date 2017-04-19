@@ -9,6 +9,11 @@ namespace CarBatteryAccounter.Model.Entities
     public class Car
     {
         /// <summary>
+        /// Идентификатор машины
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Модель машины
         /// </summary>
         public string Model { get; set; }
