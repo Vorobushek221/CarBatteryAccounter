@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Odbc;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 
@@ -25,6 +26,29 @@ namespace CarBatteryAccounter.Samples
                 var b = dr.GetInt32(1);
 
             }
+        }
+
+        public static void TestOledbConnection()
+        {
+            OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.myConnectionString2);
+
+            connection.Open();
+
+            var sql = "SELECT * FROM akkum where Gnom = 'AP1122-7'";
+
+            var command = new OleDbCommand(sql);
+
+            command.Connection = connection;
+            command.CommandText = sql;
+            var dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                var a = dr["Cust_id"].ToString();
+                var b = dr.GetInt32(1);
+
+            }
+            connection.Close();
+
         }
 
     }

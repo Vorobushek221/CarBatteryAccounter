@@ -46,8 +46,19 @@ namespace CarBatteryAccounter.View
 
         public MainWindow()
         {
+            //CodeSamples.TestOledbConnection();
 
-            InitializeComponent();
+            var fileUpdater = new FileUpdater();
+
+            fileUpdater.CopyBattaryTableToLocalDirectory();
+            fileUpdater.CopyCarTableToLocalDirectory();
+            //using (var databaseOperations = new OleDatabaseOperations(Properties.Settings.Default.tableName))
+            //{
+            //    databaseOperations.UpdateSourceTable();
+            //}
+
+
+                InitializeComponent();
 
             documentManager = new DocumentManager();
             

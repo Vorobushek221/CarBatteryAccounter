@@ -33,15 +33,60 @@ namespace CarBatteryAccounter.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("acc_.dbf")]
         public string tableName {
             get {
                 return ((string)(this["tableName"]));
             }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("spr_pds.dbf")]
+        public string carTableName {
+            get {
+                return ((string)(this["carTableName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("akkum.DBF")]
+        public string battaryTableName {
+            get {
+                return ((string)(this["battaryTableName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\\\1f\\\\")]
+        public string carTablePath {
+            get {
+                return ((string)(this["carTablePath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\\\2f\\\\")]
+        public string battaryTablePath {
+            get {
+                return ((string)(this["battaryTablePath"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=vfpoledb;Data Source=data\\db\\;Collating Sequence=machine;")]
+        public string myConnectionString2 {
+            get {
+                return ((string)(this["myConnectionString2"]));
+            }
             set {
-                this["tableName"] = value;
+                this["myConnectionString2"] = value;
             }
         }
     }

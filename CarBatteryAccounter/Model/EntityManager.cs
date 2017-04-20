@@ -10,7 +10,7 @@ namespace CarBatteryAccounter.Model
     {
         public static List<Car> GetCarCollection()
         {
-            var databaseOperations = new DatabaseOperations(Properties.Settings.Default.tableName);
+            var databaseOperations = new OleDatabaseOperations();
             var carsQuery = databaseOperations.GetDistinctCarsQuery();
             var battatiesQuery = databaseOperations.GetBattariesQuery();
 
@@ -19,13 +19,13 @@ namespace CarBatteryAccounter.Model
 
             foreach (var row in carsQuery)
             {
-                if (row["Llist"].ToString() != "False")
+                if (row["llist"].ToString() != "False")
                 {
                     var car = new Car
                     {
                         Id = int.Parse(row["gnaid"].ToString()),
                         Number = row["gn"].ToString(),
-                        Model = row["Nm"].ToString(),
+                        Model = row["nm"].ToString(),
                         Battaries = new List<Battary>()
                     };
                     cars.Add(car);
@@ -34,20 +34,20 @@ namespace CarBatteryAccounter.Model
 
             foreach (var row in battatiesQuery)
             {
-                if (row["Llist"].ToString() != "False")
+                if (row["llist"].ToString() != "False")
                 {
 
                     var battary = new Battary
                     {
-                        Type = row["Tipa"].ToString(),
-                        SerialNumber = row["Nomak"].ToString(),
-                        NomenclatureNumber = row["Nnomak"].ToString()
+                        Type = row["tipa"].ToString(),
+                        SerialNumber = row["nomak"].ToString(),
+                        NomenclatureNumber = row["nnomak"].ToString()
                     };
 
                     DateTime setDate = default(DateTime);
                     DateTime writeOffDate = default(DateTime);
 
-                    if (DateTime.TryParse(row["Datspis"].ToString(), out writeOffDate))
+                    if (DateTime.TryParse(row["datspis"].ToString(), out writeOffDate))
                     {
                         battary.WriteOffDate = writeOffDate;
                     }
@@ -56,7 +56,7 @@ namespace CarBatteryAccounter.Model
                         battary.WriteOffDate = null;
                     }
 
-                    if (DateTime.TryParse(row["Datpol"].ToString(), out setDate))
+                    if (DateTime.TryParse(row["datpol"].ToString(), out setDate))
                     {
                         battary.SetDate = setDate;
                     }
@@ -81,33 +81,37 @@ namespace CarBatteryAccounter.Model
         {
             var battaryList = new List<Battary>();
 
-            var databaseOperations = new DatabaseOperations(Properties.Settings.Default.tableName);
+            var databaseOperations = new OleDatabaseOperations();
             var battatiesQuery = databaseOperations.GetBattariesQuery();
 
             foreach (var row in battatiesQuery)
             {
-                if (row["Llist"].ToString() == "False")
+                if (row["llist"].ToString() == "False")
                 {
                     var battary = new Battary
                     {
-                        Type = row["Tipa"].ToString(),
-                        SerialNumber = row["Nomak"].ToString(),
-                        NomenclatureNumber = row["Nnomak"].ToString()
+                        Type = row["tipa"].ToString(),
+                        SerialNumber = row["nomak"].ToString(),
+                        NomenclatureNumber = row["nnomak"].ToString()
                     };
 
                     DateTime setDate = default(DateTime);
                     DateTime writeOffDate = default(DateTime);
 
-                    if (DateTime.TryParse(row["Datspis"].ToString(), out writeOffDate))
+                    if (DateTime.TryParse(row["datspis"].ToString(), out writeOffDate))
                     {
                         battary.WriteOffDate = writeOffDate;
+                        if(writeOffDate.Year < 1900)
+                        {
+                            var a = 1;
+                        }
                     }
                     else
                     {
                         battary.WriteOffDate = null;
                     }
 
-                    if (DateTime.TryParse(row["Datpol"].ToString(), out setDate))
+                    if (DateTime.TryParse(row["datpol"].ToString(), out setDate))
                     {
                         battary.SetDate = setDate;
                     }
@@ -118,19 +122,18 @@ namespace CarBatteryAccounter.Model
 
                     if (battary.WriteOffDate != null)
                     {
-                        continue;
+                        if (battary.WriteOffDate?.Year != 1899)
+                        {
+                            continue;
+                        }
                     }
-                    else
-                    {
-                        battaryList.Add(battary);
-                    }
+
+                    battaryList.Add(battary);
+
                 }
 
             }
-
             return battaryList;
         }
     }
-
-    
 }

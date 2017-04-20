@@ -9,8 +9,23 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Driver={Microsoft dBASE Driver (*.dbf)};DriverID=277;Dbq=data\\db;</Value>
     </Setting>
-    <Setting Name="tableName" Type="System.String" Scope="User">
+    <Setting Name="tableName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">acc_.dbf</Value>
+    </Setting>
+    <Setting Name="carTableName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">spr_pds.dbf</Value>
+    </Setting>
+    <Setting Name="battaryTableName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">akkum.DBF</Value>
+    </Setting>
+    <Setting Name="carTablePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\\1f\\</Value>
+    </Setting>
+    <Setting Name="battaryTablePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\\2f\\</Value>
+    </Setting>
+    <Setting Name="myConnectionString2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Provider=vfpoledb;Data Source=data\db\;Collating Sequence=machine;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
